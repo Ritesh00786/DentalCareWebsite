@@ -34,26 +34,6 @@ def service(request):
 	return render(request, 'service.html', {})
 
 def pricing(request):
-            
-	# {% for i in data%}
- #              {{i.services}}
- #              {{i.sittings}}
- #              {{i.cost}}
- #            {% endfor %}
-            
-	# data = {
-	# 	"services" : "Teeth Whitening Service at Dental Clinic",
-	# 	"sittings" : "1 times",
-	# 	"cost" : "$120.00"
-	# }
-
-	# response = {'results': data}
-
-	# data = serializers.serialize('json', data)
- #    context = {"data":data}
- #    return render(request, "pricing.html", context)
-
-	# finalData = JsonResponse(data)
 	context = {
 		"services" : "Teeth Whitening Service at Dental Clinic",
 		"sittings" : "1 times",
