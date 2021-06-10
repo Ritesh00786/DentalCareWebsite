@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.core.mail import send_mail
 from django.http import JsonResponse
 from django.core import serializers
-import requests
+# import requests
+
 
 def home(request):
 	return render(request, 'home.html', {})
@@ -29,8 +30,9 @@ def contact(request):
 		return render(request, 'contact.html', {})
 
 def about(request):
-	response = requests.get('http://fakeapi.jsonparseronline.com/users').json()
-	return render(request, 'about.html', {'response' : response})
+	# response = requests.get('http://fakeapi.jsonparseronline.com/users').json()
+	# return render(request, 'about.html', {'response' : response})
+	return render(request, 'about.html', {})
 
 def service(request):
 	return render(request, 'service.html', {})
