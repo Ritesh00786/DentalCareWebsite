@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.core.mail import send_mail
 from django.http import JsonResponse
 from django.core import serializers
+import requests
 
 def home(request):
 	return render(request, 'home.html', {})
@@ -28,18 +29,71 @@ def contact(request):
 		return render(request, 'contact.html', {})
 
 def about(request):
-	return render(request, 'about.html', {})
+	response = requests.get('http://fakeapi.jsonparseronline.com/users').json()
+	return render(request, 'about.html', {'response' : response})
 
 def service(request):
 	return render(request, 'service.html', {})
 
 def pricing(request):
-	context = {
+	data = [
+	{
 		"services" : "Teeth Whitening Service at Dental Clinic",
 		"sittings" : "1 times",
 		"cost" : "$120.00"
+	},
+	{
+		"services" : "Teeth Whitening Service at home",
+		"sittings" : "1 times",
+		"cost" : "$110.00"
+	},
+	{
+		"services" : "Ceramic crowns and fillings Dental porcelain",
+		"sittings" : "1 times",
+		"cost" : "$100.00"
+	},
+	{
+		"services" : "Covering the recession of the gums",
+		"sittings" : "1 times",
+		"cost" : "$450.00"
+	},
+	{
+		"services" : "Teeth Whitening Service at Dental Clinic",
+		"sittings" : "1 times",
+		"cost" : "$120.00"
+	},
+	{
+		"services" : "Consultation, impressions and preparation of models",
+		"sittings" : "1 times",
+		"cost" : "$45.00"
+	},
+	{
+		"services" : "Remove crowns, bridges Service",
+		"sittings" : "1 tooth",
+		"cost" : "$60.00"
+	},
+	{
+		"services" : "Removal of an old inlay, old crown",
+		"sittings" : "1 times",
+		"cost" : "$100.00"
+	},
+	{
+		"services" : "Implantation of an implant (price depends on system used)",
+		"sittings" : "1 tooth",
+		"cost" : "$550.00"
+	},
+	{
+		"services" : "Standard porcelain and zirconium crown on implant",
+		"sittings" : "1 tooth",
+		"cost" : "$500.00"
+	},
+	{
+		"services" : "Overlay teeth whitening ( 2 arches)",
+		"sittings" : "1 times",
+		"cost" : "$150.00"
 	}
-	return render(request, 'pricing.html', context)
+	]
+	return render(request, 'pricing.html', {'response' : data})
 
 def appointment(request):
 	if request.method == "POST":
@@ -73,66 +127,3 @@ def appointment(request):
 
 	else:
 		return render(request, 'home.html', {})
-
-
-# def price_model_detail_view(request):
-# 	data = [
-# 	{
-# 		"services" : "Teeth Whitening Service at Dental Clinic",
-# 		"sittings" : "1 times",
-# 		"cost" : "$120.00"
-# 	},
-# 	{
-# 		"services" : "Teeth Whitening Service at home",
-# 		"sittings" : "1 times",
-# 		"cost" : "$110.00"
-# 	},
-# 	{
-# 		"services" : "Ceramic crowns and fillings Dental porcelain",
-# 		"sittings" : "1 times",
-# 		"cost" : "$100.00"
-# 	},
-# 	{
-# 		"services" : "Covering the recession of the gums",
-# 		"sittings" : "1 times",
-# 		"cost" : "$450.00"
-# 	},
-# 	{
-# 		"services" : "Teeth Whitening Service at Dental Clinic",
-# 		"sittings" : "1 times",
-# 		"cost" : "$120.00"
-# 	},
-# 	{
-# 		"services" : "Consultation, impressions and preparation of models",
-# 		"sittings" : "1 times",
-# 		"cost" : "$45.00"
-# 	},
-# 	{
-# 		"services" : "Remove crowns, bridges Service",
-# 		"sittings" : "1 tooth",
-# 		"cost" : "$60.00"
-# 	},
-# 	{
-# 		"services" : "Removal of an old inlay, old crown",
-# 		"sittings" : "1 times",
-# 		"cost" : "$100.00"
-# 	},
-# 	{
-# 		"services" : "Implantation of an implant (price depends on system used)",
-# 		"sittings" : "1 tooth",
-# 		"cost" : "$550.00"
-# 	},
-# 	{
-# 		"services" : "Standard porcelain and zirconium crown on implant",
-# 		"sittings" : "1 tooth",
-# 		"cost" : "$500.00"
-# 	},
-# 	{
-# 		"services" : "Overlay teeth whitening ( 2 arches)",
-# 		"sittings" : "1 times",
-# 		"cost" : "$150.00"
-# 	}
-# 	]
-
-# 	return JsonResponse(data)
-

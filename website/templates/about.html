@@ -257,7 +257,33 @@
           </div>
         </div>
       </div>
-    </div>
+
+      <div class="row">
+              <div class="col-12">
+                <div class="dento-price-table table-responsive">
+                  <table class="table table-borderless mb-0">
+                    <thead>
+                      <tr>
+                        <th scope="col">Our Dentists</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Email</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for d in response%}
+                      <tr>
+                        <th scope="row">{{d.firstName}} {{d.lastname}}</th>
+                        <td>{{d.gender}}</td>
+                        <td>{{d.email}}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+        </div>
+
+          </div>
   </section>
   <!-- ***** Dentist Area End ***** -->
 

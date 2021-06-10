@@ -45,11 +45,13 @@
                 </tr>
               </thead>
               <tbody>
+                {% for i in response%}
                 <tr>
-                  <th scope="row">{{services}}</th>
-                  <td>{{sittings}}</td>
-                  <td>{{cost}}</td>
+                  <th scope="row">{{i.services}}</th>
+                  <td>{{i.sittings}}</td>
+                  <td>{{i.cost}}</td>
                 </tr>
+                {% endfor %}
               </tbody>
             </table>
           </div>
